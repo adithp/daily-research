@@ -54,8 +54,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // A database of all your research projects.
-            // To add a new one, you'll just add a new entry here.
             const researchData = {
                 'fullstack-2025': {
                     title: "Choosing Your Path: A Full-Stack Developer's Guide",
@@ -68,36 +66,32 @@
                         seniorSalaryIndia: {
                             labels: ['MERN', 'Python (AI/ML Niche)', '.NET', 'Java'],
                             data: [25, 35, 28, 30]
+                        },
+                        futureSkills: {
+                            labels: ['Core Stack', 'Cloud (AWS/Azure)', 'DevOps (CI/CD)', 'AI/ML APIs', 'System Design'],
+                            data: [7, 9, 8, 7, 10]
                         }
                     }
                 }
-                // You can add more research projects here like this:
-                // 'ai-in-fintech-2025': { ... data ... }
             };
 
-            // Get the research ID from the URL (e.g., ?id=fullstack-2025)
             const params = new URLSearchParams(window.location.search);
             const researchId = params.get('id');
-
             const contentWrapper = document.getElementById('detail-content-wrapper');
             const loadingMessage = document.getElementById('loading-message');
-
             const data = researchData[researchId];
 
             if (data) {
-                // Set the page title
                 document.title = data.title;
-
-                // Remove loading message
                 loadingMessage.style.display = 'none';
                 
-                // Generate the HTML for the infographic
                 contentWrapper.innerHTML = `
                     <div class="container mx-auto max-w-7xl bg-slate-50 rounded-2xl p-4 md:p-8">
                         <header class="text-center mb-12">
                             <h1 class="text-4xl md:text-5xl font-black text-slate-800">${data.title}</h1>
                             <p class="text-lg text-slate-500 mt-4 max-w-3xl mx-auto">${data.subtitle}</p>
                         </header>
+
                         <section class="mb-16">
                             <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
                                 <h2 class="text-3xl font-bold text-slate-800 text-center mb-6">The Most Important Career Decision</h2>
@@ -115,6 +109,27 @@
                                 <p class="text-center mt-6 text-slate-500 italic">Your choice of stack is a strategic tool. The best one is the stack that gives you the clearest path to an international role.</p>
                             </div>
                         </section>
+
+                        <section class="mb-16">
+                            <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">The Indian Job Market: Two Worlds</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-teal-500">
+                                    <h3 class="text-2xl font-bold text-slate-800 mb-3">🚀 The Startup Ecosystem</h3>
+                                    <p class="text-slate-600 mb-4">Dominated by fast-paced, agile development. Ideal for rapid prototyping and getting products to market quickly.</p>
+                                    <p class="font-semibold text-lg mb-2">Primary Stack: <span class="font-black text-teal-600">MERN</span></p>
+                                    <p class="text-slate-600"><strong class="text-slate-800">Pros:</strong> Fastest path to a job, huge community, high demand in startups.</p>
+                                    <p class="text-slate-600"><strong class="text-slate-800">Cons:</strong> High competition for entry-level roles can suppress starting salaries.</p>
+                                </div>
+                                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-amber-400">
+                                    <h3 class="text-2xl font-bold text-slate-800 mb-3">🏢 The Enterprise World</h3>
+                                    <p class="text-slate-600 mb-4">Focused on stability, security, and scalability for mission-critical systems.</p>
+                                    <p class="font-semibold text-lg mb-2">Primary Stacks: <span class="font-black text-amber-600">Java & .NET</span></p>
+                                    <p class="text-slate-600"><strong class="text-slate-800">Pros:</strong> Highest senior salaries in India, long-term stability, clear career progression.</p>
+                                    <p class="text-slate-600"><strong class="text-slate-800">Cons:</strong> Steeper learning curve, more structured environment.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
                         <section class="mb-16">
                             <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
                                 <h2 class="text-3xl font-bold text-slate-800 text-center mb-2">Indian Salary Showdown (Senior Roles)</h2>
@@ -124,11 +139,76 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- More static sections can be added here -->
+
+                        <section class="mb-16">
+                            <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">Your Path to a Global Career</h2>
+                            <p class="text-center text-slate-500 max-w-3xl mx-auto mb-10">How does your stack choice influence your chances of moving abroad? The key is the type of company you join.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                                <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md">
+                                    <div class="text-5xl mb-4">✈️</div>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-3">The Structured Path (Recommended)</h3>
+                                    <p class="text-slate-600 mb-4">Join a global MNC in India that uses enterprise technology.</p>
+                                    <div class="font-mono text-lg p-3 bg-slate-100 rounded-md text-slate-700 font-bold shadow-inner">Java / .NET</div>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <p class="text-slate-700 font-semibold mb-2">Gain expertise in their core systems.</p>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <p class="text-slate-700 font-semibold mb-2">Leverage internal mobility programs.</p>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <div class="w-full p-4 bg-teal-500 text-white rounded-lg shadow-lg">
+                                        <p class="font-bold text-lg">Outcome: Higher chance of a company-sponsored visa and a smoother transition abroad.</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md">
+                                    <div class="text-5xl mb-4">🎲</div>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-3">The Independent Path</h3>
+                                    <p class="text-slate-600 mb-4">Join a domestic startup or services firm.</p>
+                                    <div class="font-mono text-lg p-3 bg-slate-100 rounded-md text-slate-700 font-bold shadow-inner">MERN / Python</div>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <p class="text-slate-700 font-semibold mb-2">Build a strong independent portfolio.</p>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <p class="text-slate-700 font-semibold mb-2">Apply for jobs abroad directly.</p>
+                                    <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                                    <div class="w-full p-4 bg-rose-500 text-white rounded-lg shadow-lg">
+                                        <p class="font-bold text-lg">Outcome: Rely on competitive, lottery-based visas. Less predictable, higher uncertainty.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-16">
+                            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
+                                <h2 class="text-3xl font-bold text-slate-800 text-center mb-2">Future-Proofing Your Career</h2>
+                                <p class="text-center text-slate-500 mb-8">Long-term growth depends on skills beyond a single framework. Here's what matters most.</p>
+                                <div class="chart-container">
+                                    <canvas id="futureSkillsChart"></canvas>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-8">
+                            <div class="modern-gradient-bg text-white rounded-2xl shadow-2xl p-8 md:p-12">
+                                <h2 class="text-4xl font-black text-center mb-6">Final Verdict & Strategic Recommendation</h2>
+                                <p class="text-lg md:text-xl text-center text-indigo-100 mb-8 max-w-4xl mx-auto">For a developer optimizing for both high salary and a clear path to international relocation, the most strategically sound choice is to master an enterprise stack.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-700">
+                                    <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
+                                        <h3 class="font-bold text-2xl mb-3 text-slate-800">Primary Recommendation</h3>
+                                        <p class="font-mono text-xl font-bold bg-amber-200 text-amber-800 inline-block px-3 py-1 rounded-md mb-3">Java + Spring Boot or .NET + C#</p>
+                                        <p class="mb-2"><strong>Why:</strong> These stacks give you access to the highest senior salaries in India's stable enterprise sector.</p>
+                                        <p><strong>The Global Edge:</strong> They are the core technologies of the global MNCs that have established programs for transferring employees abroad.</p>
+                                    </div>
+                                    <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
+                                        <h3 class="font-bold text-2xl mb-3 text-slate-800">Alternative Path</h3>
+                                        <p class="font-mono text-xl font-bold bg-teal-200 text-teal-800 inline-block px-3 py-1 rounded-md mb-3">MERN Stack</p>
+                                        <p class="mb-2"><strong>Why:</strong> An excellent choice if your priority is joining the fast-paced startup world and getting job-ready quickly.</p>
+                                        <p><strong>The Challenge:</strong> Be prepared for intense entry-level competition and a less defined path to moving abroad.</p>
+                                    </div>
+                                </div>
+                                <p class="text-center mt-10 text-indigo-200 italic">Continuous learning in cloud platforms (AWS, Azure) and DevOps is essential for long-term growth.</p>
+                            </div>
+                        </section>
                     </div>
                 `;
 
-                // Initialize the charts with data
                 initializeInfographicCharts(data.charts);
 
             } else {
@@ -183,6 +263,38 @@
                             scales: {
                                 y: { beginAtZero: true, title: { display: true, text: 'Salary in Lakhs Per Annum (₹)', color: modernPalette.textLight }, ticks: { color: modernPalette.textLight } },
                                 x: { grid: { display: false }, ticks: { color: modernPalette.textDark, font: { weight: 'bold' } } }
+                            },
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+                }
+
+                const futureSkillsCanvas = document.getElementById('futureSkillsChart');
+                if (futureSkillsCanvas && chartData.futureSkills) {
+                    new Chart(futureSkillsCanvas.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            labels: chartData.futureSkills.labels,
+                            datasets: [{
+                                label: 'Importance for Senior Roles',
+                                data: chartData.futureSkills.data,
+                                backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                                borderColor: modernPalette.primary,
+                                pointBackgroundColor: modernPalette.primary,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: modernPalette.primary
+                            }]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            scales: {
+                                r: {
+                                    angleLines: { color: '#e2e8f0' },
+                                    grid: { color: '#e2e8f0' },
+                                    pointLabels: { font: { size: 14, weight: '600' }, color: modernPalette.textDark },
+                                    ticks: { display: false, stepSize: 2 }
+                                }
                             },
                             plugins: { legend: { display: false } }
                         }
