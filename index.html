@@ -5,26 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Research Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Lighter gray background */
+            background-color: #f8fafc;
         }
         .research-card {
+            display: flex;
+            flex-direction: column;
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
         }
         .research-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-        .hidden {
-            display: none;
         }
         .view-arrow {
             opacity: 0;
@@ -35,316 +34,60 @@
             opacity: 1;
             transform: translateX(0);
         }
-        .modern-gradient-bg {
-             background: linear-gradient(135deg, #4f46e5 0%, #14b8a6 100%);
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 320px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 380px;
-            }
-        }
-        .path-arrow {
-            margin: 0.75rem 0;
-            color: #94a3b8; /* Slate 400 */
-        }
     </style>
 </head>
 <body class="text-slate-700">
 
-    <!-- Main container for the app -->
-    <div id="app-container" class="container mx-auto p-4 md:p-8">
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-black text-slate-800">Research & Analysis</h1>
+            <p class="text-lg text-slate-500 mt-4 max-w-2xl mx-auto">A curated collection of data-driven insights and strategic reports.</p>
+        </header>
 
-        <!-- View 1: List of all research projects -->
-        <div id="research-list-view">
-            <header class="text-center mb-16">
-                <h1 class="text-5xl md:text-6xl font-black text-slate-800">Research & Analysis</h1>
-                <p class="text-lg text-slate-500 mt-4 max-w-2xl mx-auto">A curated collection of data-driven insights and strategic reports.</p>
-            </header>
-
-            <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Research Card 1: Full-Stack Analysis -->
-                <div class="research-card rounded-xl overflow-hidden cursor-pointer flex flex-col" data-research-id="fullstack-2025">
-                    <div class="p-6 md:p-8 flex-grow">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-3">Full-Stack Career Path Analysis</h2>
-                        <p class="text-slate-600 mb-6">A data-driven guide to choosing a full-stack path for salary and global growth.</p>
-                        <div>
-                            <span class="inline-block bg-indigo-100 text-indigo-700 text-sm font-medium mr-2 px-3 py-1 rounded-full">Technology</span>
-                            <span class="inline-block bg-teal-100 text-teal-700 text-sm font-medium mr-2 px-3 py-1 rounded-full">Career</span>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
-                        <span class="font-semibold text-indigo-600">View Research</span>
-                        <span class="view-arrow text-indigo-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </span>
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Research Card 1: Links to the detail page with a specific ID -->
+            <a href="research-detail.html?id=fullstack-2025" class="research-card rounded-xl overflow-hidden">
+                <div class="p-6 md:p-8 flex-grow">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3">Full-Stack Career Path Analysis</h2>
+                    <p class="text-slate-600 mb-6">A data-driven guide to choosing a full-stack path for salary and global growth.</p>
+                    <div>
+                        <span class="inline-block bg-indigo-100 text-indigo-700 text-sm font-medium mr-2 px-3 py-1 rounded-full">Technology</span>
+                        <span class="inline-block bg-teal-100 text-teal-700 text-sm font-medium mr-2 px-3 py-1 rounded-full">Career</span>
                     </div>
                 </div>
-
-                <!-- Placeholder Card 2 -->
-                <div class="research-card rounded-xl overflow-hidden cursor-not-allowed opacity-70 flex flex-col">
-                     <div class="p-6 md:p-8 flex-grow">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-3">The Rise of AI in FinTech</h2>
-                        <p class="text-slate-600 mb-6">An upcoming analysis of how machine learning is transforming financial services.</p>
-                        <span class="inline-block bg-slate-200 text-slate-600 text-sm font-medium mr-2 px-3 py-1 rounded-full">Coming Soon</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-200">
-                         <span class="font-semibold text-slate-400">Awaiting Data</span>
-                    </div>
+                <div class="p-6 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+                    <span class="font-semibold text-indigo-600">View Research</span>
+                    <span class="view-arrow text-indigo-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </span>
                 </div>
+            </a>
 
-                <!-- Placeholder Card 3 -->
-                 <div class="research-card rounded-xl overflow-hidden cursor-not-allowed opacity-70 flex flex-col">
-                     <div class="p-6 md:p-8 flex-grow">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-3">Cloud Computing Market Share</h2>
-                        <p class="text-slate-600 mb-6">Visualizing the battle between AWS, Azure, and GCP in the enterprise space.</p>
-                        <span class="inline-block bg-slate-200 text-slate-600 text-sm font-medium mr-2 px-3 py-1 rounded-full">Coming Soon</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-200">
-                         <span class="font-semibold text-slate-400">Awaiting Data</span>
-                    </div>
+            <!-- Placeholder Card 2 -->
+            <div class="research-card rounded-xl overflow-hidden cursor-not-allowed opacity-70">
+                 <div class="p-6 md:p-8 flex-grow">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3">The Rise of AI in FinTech</h2>
+                    <p class="text-slate-600 mb-6">An upcoming analysis of how machine learning is transforming financial services.</p>
+                    <span class="inline-block bg-slate-200 text-slate-600 text-sm font-medium mr-2 px-3 py-1 rounded-full">Coming Soon</span>
                 </div>
-            </main>
-        </div>
-
-        <!-- View 2: Detail view for a single research project -->
-        <div id="research-detail-view" class="hidden">
-            <button id="back-button" class="mb-8 bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 font-semibold py-2 px-4 rounded-lg inline-flex items-center transition-colors">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Back to Portfolio
-            </button>
-
-            <!-- Infographic Content will be injected here -->
-            <div id="detail-content-wrapper">
-                <!-- This is the redesigned infographic -->
-                <div class="container mx-auto max-w-7xl bg-slate-50 rounded-2xl p-4 md:p-8">
-                    <header class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-black text-slate-800">Choosing Your Path: A Full-Stack Developer's Guide</h1>
-                        <p class="text-lg text-slate-500 mt-4 max-w-3xl mx-auto">An analysis of the best stacks for salary and global growth, starting from India.</p>
-                    </header>
-                    <section class="mb-16">
-                        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
-                            <h2 class="text-3xl font-bold text-slate-800 text-center mb-6">The Most Important Career Decision</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                <div class="text-center">
-                                    <p class="text-lg text-slate-600 mb-4">The single biggest factor for maximizing your salary is not the stack you choose, but the goal of international relocation.</p>
-                                    <div class="text-6xl md:text-7xl font-black text-indigo-600">4x - 5x</div>
-                                    <p class="text-xl font-semibold text-slate-800 mt-2">Potential Salary Increase</p>
-                                    <p class="text-slate-500">by moving from a senior role in India to a similar role in the USA.</p>
-                                </div>
-                                <div class="chart-container h-64 md:h-80">
-                                    <canvas id="globalSalaryChart"></canvas>
-                                </div>
-                            </div>
-                            <p class="text-center mt-6 text-slate-500 italic">Your choice of stack is a strategic tool. The best one is the stack that gives you the clearest path to an international role.</p>
-                        </div>
-                    </section>
-                    <section class="mb-16">
-                        <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">The Indian Job Market: Two Worlds</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-teal-500">
-                                <h3 class="text-2xl font-bold text-slate-800 mb-3">🚀 The Startup Ecosystem</h3>
-                                <p class="text-slate-600 mb-4">Dominated by fast-paced, agile development. Ideal for rapid prototyping and getting products to market quickly.</p>
-                                <p class="font-semibold text-lg mb-2">Primary Stack: <span class="font-black text-teal-600">MERN</span></p>
-                                <p class="text-slate-600"><strong class="text-slate-800">Pros:</strong> Fastest path to a job, huge community, high demand in startups.</p>
-                                <p class="text-slate-600"><strong class="text-slate-800">Cons:</strong> High competition for entry-level roles can suppress starting salaries.</p>
-                            </div>
-                            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-amber-400">
-                                <h3 class="text-2xl font-bold text-slate-800 mb-3">🏢 The Enterprise World</h3>
-                                <p class="text-slate-600 mb-4">Focused on stability, security, and scalability for mission-critical systems.</p>
-                                <p class="font-semibold text-lg mb-2">Primary Stacks: <span class="font-black text-amber-600">Java & .NET</span></p>
-                                <p class="text-slate-600"><strong class="text-slate-800">Pros:</strong> Highest senior salaries in India, long-term stability, clear career progression.</p>
-                                <p class="text-slate-600"><strong class="text-slate-800">Cons:</strong> Steeper learning curve, more structured environment.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="mb-16">
-                        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
-                            <h2 class="text-3xl font-bold text-slate-800 text-center mb-2">Indian Salary Showdown (Senior Roles)</h2>
-                            <p class="text-center text-slate-500 mb-8">While starting salaries are similar, enterprise stacks pull ahead for senior developers with 5+ years of experience.</p>
-                            <div class="chart-container">
-                                <canvas id="seniorSalaryIndiaChart"></canvas>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="mb-16">
-                        <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">Your Path to a Global Career</h2>
-                        <p class="text-center text-slate-500 max-w-3xl mx-auto mb-10">How does your stack choice influence your chances of moving abroad? The key is the type of company you join.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                            <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md">
-                                <div class="text-5xl mb-4">✈️</div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-3">The Structured Path (Recommended)</h3>
-                                <p class="text-slate-600 mb-4">Join a global MNC in India that uses enterprise technology.</p>
-                                <div class="font-mono text-lg p-3 bg-slate-100 rounded-md text-slate-700 font-bold shadow-inner">Java / .NET</div>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <p class="text-slate-700 font-semibold mb-2">Gain expertise in their core systems.</p>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <p class="text-slate-700 font-semibold mb-2">Leverage internal mobility programs.</p>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <div class="w-full p-4 bg-teal-500 text-white rounded-lg shadow-lg">
-                                    <p class="font-bold text-lg">Outcome: Higher chance of a company-sponsored visa and a smoother transition abroad.</p>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md">
-                                <div class="text-5xl mb-4">🎲</div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-3">The Independent Path</h3>
-                                <p class="text-slate-600 mb-4">Join a domestic startup or services firm.</p>
-                                <div class="font-mono text-lg p-3 bg-slate-100 rounded-md text-slate-700 font-bold shadow-inner">MERN / Python</div>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <p class="text-slate-700 font-semibold mb-2">Build a strong independent portfolio.</p>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <p class="text-slate-700 font-semibold mb-2">Apply for jobs abroad directly.</p>
-                                <div class="path-arrow"><svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
-                                <div class="w-full p-4 bg-rose-500 text-white rounded-lg shadow-lg">
-                                    <p class="font-bold text-lg">Outcome: Rely on competitive, lottery-based visas. Less predictable, higher uncertainty.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="mb-8">
-                        <div class="modern-gradient-bg text-white rounded-2xl shadow-2xl p-8 md:p-12">
-                            <h2 class="text-4xl font-black text-center mb-6">Final Verdict & Strategic Recommendation</h2>
-                            <p class="text-lg md:text-xl text-center text-indigo-100 mb-8 max-w-4xl mx-auto">For a developer optimizing for both high salary and a clear path to international relocation, the most strategically sound choice is to master an enterprise stack.</p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-700">
-                                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
-                                    <h3 class="font-bold text-2xl mb-3 text-slate-800">Primary Recommendation</h3>
-                                    <p class="font-mono text-xl font-bold bg-amber-200 text-amber-800 inline-block px-3 py-1 rounded-md mb-3">Java + Spring Boot or .NET + C#</p>
-                                    <p class="mb-2"><strong>Why:</strong> These stacks give you access to the highest senior salaries in India's stable enterprise sector.</p>
-                                    <p><strong>The Global Edge:</strong> They are the core technologies of the global MNCs that have established programs for transferring employees abroad.</p>
-                                </div>
-                                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
-                                    <h3 class="font-bold text-2xl mb-3 text-slate-800">Alternative Path</h3>
-                                    <p class="font-mono text-xl font-bold bg-teal-200 text-teal-800 inline-block px-3 py-1 rounded-md mb-3">MERN Stack</p>
-                                    <p class="mb-2"><strong>Why:</strong> An excellent choice if your priority is joining the fast-paced startup world and getting job-ready quickly.</p>
-                                    <p><strong>The Challenge:</strong> Be prepared for intense entry-level competition and a less defined path to moving abroad.</p>
-                                </div>
-                            </div>
-                            <p class="text-center mt-10 text-indigo-200 italic">Continuous learning in cloud platforms (AWS, Azure) and DevOps is essential for long-term growth.</p>
-                        </div>
-                    </section>
+                <div class="p-6 bg-slate-50 border-t border-slate-200">
+                     <span class="font-semibold text-slate-400">Awaiting Data</span>
                 </div>
             </div>
-        </div>
+
+            <!-- Placeholder Card 3 -->
+             <div class="research-card rounded-xl overflow-hidden cursor-not-allowed opacity-70">
+                 <div class="p-6 md:p-8 flex-grow">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3">Cloud Computing Market Share</h2>
+                    <p class="text-slate-600 mb-6">Visualizing the battle between AWS, Azure, and GCP in the enterprise space.</p>
+                    <span class="inline-block bg-slate-200 text-slate-600 text-sm font-medium mr-2 px-3 py-1 rounded-full">Coming Soon</span>
+                </div>
+                <div class="p-6 bg-slate-50 border-t border-slate-200">
+                     <span class="font-semibold text-slate-400">Awaiting Data</span>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const researchListView = document.getElementById('research-list-view');
-            const researchDetailView = document.getElementById('research-detail-view');
-            const backButton = document.getElementById('back-button');
-            const researchCards = document.querySelectorAll('.research-card[data-research-id]');
-
-            let chartsInitialized = false;
-
-            function showDetailView() {
-                researchListView.classList.add('hidden');
-                researchDetailView.classList.remove('hidden');
-                window.scrollTo(0, 0);
-                if (!chartsInitialized) {
-                    initializeInfographicCharts();
-                    chartsInitialized = true;
-                }
-            }
-
-            function showListView() {
-                researchDetailView.classList.add('hidden');
-                researchListView.classList.remove('hidden');
-                window.scrollTo(0, 0);
-            }
-
-            researchCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    if (card.dataset.researchId === 'fullstack-2025') {
-                        showDetailView();
-                    }
-                });
-            });
-
-            backButton.addEventListener('click', showListView);
-
-            function initializeInfographicCharts() {
-                const tooltipTitleCallback = (tooltipItems) => {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    return Array.isArray(label) ? label.join(' ') : label;
-                };
-
-                const modernPalette = {
-                    primary: '#4f46e5', // Indigo 600
-                    secondary: '#14b8a6', // Teal 500
-                    accent: '#f59e0b', // Amber 500
-                    danger: '#ef4444', // Rose 500
-                    textDark: '#1e293b', // Slate 800
-                    textLight: '#64748b' // Slate 500
-                };
-
-                const globalSalaryCanvas = document.getElementById('globalSalaryChart');
-                if (globalSalaryCanvas) {
-                    new Chart(globalSalaryCanvas.getContext('2d'), {
-                        type: 'bar',
-                        data: {
-                            labels: ['Senior Dev Salary (India)', 'Senior Dev Salary (USA)'],
-                            datasets: [{
-                                label: 'Average Annual Salary (USD)',
-                                data: [38000, 150000],
-                                backgroundColor: [modernPalette.secondary, modernPalette.primary],
-                                borderWidth: 0,
-                                borderRadius: 6,
-                            }]
-                        },
-                        options: {
-                            responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                            scales: {
-                                x: { beginAtZero: true, grid: { drawOnChartArea: false }, ticks: { callback: (v) => '$' + (v / 1000) + 'k', color: modernPalette.textLight } },
-                                y: { grid: { display: false }, ticks: { color: modernPalette.textDark, font: { weight: '600' } } }
-                            },
-                            plugins: {
-                                legend: { display: false },
-                                title: { display: true, text: 'Global Salary Arbitrage (Java/.NET Example)', color: modernPalette.textDark, font: { size: 16, weight: 'bold' } },
-                                tooltip: { callbacks: { title: tooltipTitleCallback } }
-                            }
-                        }
-                    });
-                }
-
-                const seniorSalaryIndiaCanvas = document.getElementById('seniorSalaryIndiaChart');
-                if (seniorSalaryIndiaCanvas) {
-                    new Chart(seniorSalaryIndiaCanvas.getContext('2d'), {
-                        type: 'bar',
-                        data: {
-                            labels: ['MERN', 'Python (AI/ML Niche)', '.NET', 'Java'],
-                            datasets: [{
-                                label: 'Max Potential Senior Salary (LPA)',
-                                data: [25, 35, 28, 30],
-                                backgroundColor: [modernPalette.secondary, '#0d9488', modernPalette.accent, '#d97706'],
-                                borderWidth: 0,
-                                borderRadius: 6
-                            }]
-                        },
-                        options: {
-                            responsive: true, maintainAspectRatio: false,
-                            scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Salary in Lakhs Per Annum (₹)', color: modernPalette.textLight }, ticks: { color: modernPalette.textLight } },
-                                x: { grid: { display: false }, ticks: { color: modernPalette.textDark, font: { weight: 'bold' } } }
-                            },
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: { callbacks: { title: tooltipTitleCallback } }
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    </script>
 
 </body>
 </html>
